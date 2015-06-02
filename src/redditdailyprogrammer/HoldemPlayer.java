@@ -43,7 +43,6 @@ public class HoldemPlayer {
 		String hand;
 
 		do {
-
 			// generate first random card
 
 			rankChoice = randRank.nextInt(ranks.size());
