@@ -8,53 +8,105 @@ import java.util.Scanner;
 public class TexasHoldThem {
 
 	private static Scanner sc = new Scanner(System.in);
-	private static int numOfPlayers;
+	public static int numOfPlayers;
+	
+	static ArrayList<String> ranks = new ArrayList<String>(Arrays.asList("2", "3",
+			"4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"));
 
-	Random rankSuit = new Random();
+	static ArrayList<String> suits = new ArrayList<String>(Arrays.asList("s", "d",
+			"c", "h"));
+	
+	static ArrayList<String> dealt = new ArrayList<String>(); 
+	
+	static Random rRank = new Random();
+	static Random rSuit = new Random();
+	static int rankIndex;
+	static int suitIndex;
+
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		playerCount();
-		HoldemPlayer You = new HoldemPlayer();
-		HoldemPlayer p2 = new HoldemPlayer();
-		HoldemPlayer p3 = new HoldemPlayer();
-		HoldemPlayer p4 = new HoldemPlayer();
-		HoldemPlayer p5 = new HoldemPlayer();
-		HoldemPlayer p6 = new HoldemPlayer();
-		HoldemPlayer p7 = new HoldemPlayer();
-		HoldemPlayer p8 = new HoldemPlayer();
-		
-		
-		
-		
-		You.dealHand();
-		p2.dealHand();
-		p3.dealHand();
-		p4.dealHand();
-		p5.dealHand();
-		p6.dealHand();
-		p7.dealHand();
-		p8.dealHand();
+		//run dealHands method to deal hands to the given number of players
+		dealHands();
 		
 
 	}
 
-	public static int playerCount() {
-		System.out.println("How many players? (2-8): ");
-		numOfPlayers = sc.nextInt();
+	public static void playerCount() {
 		
-		ArrayList <HoldemPlayer> playerList = new ArrayList <HoldemPlayer>(numOfPlayers);
+		boolean firstTry = true;
+		do {
+			if (firstTry) {
+				System.out.println("How many players? (2-8): ");
+				firstTry = false;
+			}
+			
+			else System.out.println("Not a valid choice. Enter a whole number between 2 and 8.");
+			
+			while(!sc.hasNextInt()) {
+				System.out.println("Not a valid choice. Enter a whole number between 2 and 8.");
+				sc.next();
+			}
+			
+			numOfPlayers = sc.nextInt();
+			
+		}while(numOfPlayers < 2 || numOfPlayers > 8);
 		
-		//String [] playerNames = {"You", "CPU1", "CPU2", "CPU3", "CPU4", "CPU5", "CPU6", "CPU7"};
-		for (int i = 0; i < numOfPlayers; i++) {
-			HoldemPlayer p = new HoldemPlayer();
-			playerList.add(p);
+		
+		
+		
+		
+		
+		
+
+	}
+	
+	public static void dealHands() {
+		int cardsToDeal = 2*numOfPlayers; //each player gets two cards
+		
+		
+		
+		for (int i = 0; i < cardsToDeal; i++) {
+			
+			//select a random index from each arraylist
+			int rankIndex;
+			int suitIndex;
+			
+			//get the string at each index
+			String r;
+			String s; 
+			String c;
+			
+			
+			
+		
+		do {
+			rankIndex = rRank.nextInt(ranks.size());
+			suitIndex = rSuit.nextInt(suits.size());
+			r = ranks.get(rankIndex);
+			s = suits.get(suitIndex);
+			c = r+s;
+			
+			
+			
+		} while (dealt.contains(c));
+		
+		dealt.add(c);
+			
+		
+			
+			
+		}
+		
+		for (String s: dealt) {
+			System.out.println(s);
 		}
 		
 		
-		return numOfPlayers;
-
 	}
+	
+	//method that matches cards to players
 
 }
 
