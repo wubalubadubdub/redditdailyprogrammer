@@ -10,12 +10,18 @@ public class HoldemGame {
 	int numPlayers;
 	Random r = new Random(); //used for generating random cards
 	
+	int cIndex;
+	String card;
+	
 	ArrayList<String> cards = new ArrayList<String>(Arrays.asList("2d", "2s",
 			"2c", "2h", "3d", "3s", "3c", "3h", "4d", "4s", "4c", "4h", "5d",
 			"5s", "5c", "5h", "6d", "6s", "6c", "6h", "7d", "7s", "7c", "7h",
 			"8d", "8s", "8c", "8h", "9d", "9s", "9c", "9h", "10d", "10s",
 			"10c", "10h", "Jd", "Js", "Jc", "Jh", "Qd", "Qs", "Qc", "Qh", "Kd",
 			"Ks", "Kc", "Kh", "Ad", "As", "Ac", "Ah"));
+	
+	ArrayList<String> board = new ArrayList<String>(); //to hold flop, turn, and river cards
+	
 	
 	
 	HoldemPlayer p1 = new HoldemPlayer("You");
@@ -37,7 +43,8 @@ public class HoldemGame {
 		game.getPlayers(); // have the user enter the number of players
 		game.dealHands();
 		game.displayHands();
-		
+		game.dealBoard();
+		game.displayBoard();
 		
 		
 		
@@ -74,8 +81,7 @@ public class HoldemGame {
 
 	public void dealHands() {
 		// code that sets the hand var for each player
-		int cIndex;
-		String card;
+		
 	
 		
 
@@ -108,6 +114,33 @@ public class HoldemGame {
 			}
 			
 		}
+	
+	public void dealBoard() {
+		for (int i = 0; i < 5; i++) {
+			 cIndex = r.nextInt(cards.size()); //generate index for random card
+			 card = cards.get(cIndex);
+			 board.add(card); //add the card to the board of community cards
+			 cards.remove(cIndex); //make sure it can't be selected again
+			 
+		}
+	}
+	
+	public void displayBoard() {
+		String flop;
+		String turn;
+		String river;
+		
+		
+		flop = board.get(0) + " " + board.get(1) + " " + board.get(2);
+		turn = board.get(3);
+		river = board.get(4);
+		
+		System.out.println(); //to make space between players hands and this
+		System.out.println("Flop: " +flop);
+		System.out.println("Turn: " +turn);
+		System.out.println("River: " +river);
+		
+	}
 	
 	
 	
