@@ -14,7 +14,7 @@ public class TexasHoldThem {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		getPlayerCount();
+		playerCount();
 		HoldemPlayer You = new HoldemPlayer();
 		HoldemPlayer p2 = new HoldemPlayer();
 		HoldemPlayer p3 = new HoldemPlayer();
@@ -39,9 +39,19 @@ public class TexasHoldThem {
 
 	}
 
-	public static int getPlayerCount() {
+	public static int playerCount() {
 		System.out.println("How many players? (2-8): ");
 		numOfPlayers = sc.nextInt();
+		
+		ArrayList <HoldemPlayer> playerList = new ArrayList <HoldemPlayer>(numOfPlayers);
+		
+		//String [] playerNames = {"You", "CPU1", "CPU2", "CPU3", "CPU4", "CPU5", "CPU6", "CPU7"};
+		for (int i = 0; i < numOfPlayers; i++) {
+			HoldemPlayer p = new HoldemPlayer();
+			playerList.add(p);
+		}
+		
+		
 		return numOfPlayers;
 
 	}
