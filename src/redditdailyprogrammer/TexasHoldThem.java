@@ -18,10 +18,21 @@ public class TexasHoldThem {
 	
 	static ArrayList<String> dealt = new ArrayList<String>(); 
 	
+	static ArrayList<String> playerList = new ArrayList<String>(Arrays.asList("You", "CPU1", "CPU2", "CPU3", "CPU4", "CPU5",
+			"CPU6", "CPU7"));
+	
 	static Random rRank = new Random();
 	static Random rSuit = new Random();
+	static Random rCard = new Random();
+	
+	//vars for parts of each card
 	static int rankIndex;
 	static int suitIndex;
+	
+	//vars for each card
+	static int c1Index;
+	static int c2Index;
+	
 
 
 	public static void main(String[] args) {
@@ -106,7 +117,38 @@ public class TexasHoldThem {
 		
 	}
 	
-	//method that matches cards to players
+	//method that forms hands for each player from the cards chosen
+	public static void formHands() {
+		
+		String c1;
+		String c2;
+		String playerName;
+		String [] playerHand = new String [2];
+		
+		
+		
+		for (int i = 0; i < numOfPlayers; i++) {
+			
+			//remove two cards from the dealt list for each player. those are the player's cards
+			
+				playerName = playerList.get(i);
+				for (int j = 0; j < 3; j++) {
+					
+					i++;
+				}
+				 
+				
+				
+			
+				
+				
+			
+			
+			
+			
+		}
+	}
+	
 
 }
 
